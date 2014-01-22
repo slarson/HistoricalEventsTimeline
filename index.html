@@ -23,13 +23,14 @@ var margin = {top: 210, right: 20, bottom: 220, left: 20},
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.log()
-    .domain([.0124123, 1230.4])
+    .domain([20000000000, .01])
     .range([0, width]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
     .ticks(20, d3.format(",.1s"))
+ 
     .tickSize(6, 0);
 
 var svg = d3.select("body").append("svg")
