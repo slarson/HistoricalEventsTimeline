@@ -18,7 +18,7 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var data = { 1991:"Rosen", 1973:"Dobzhansky", 1953:"Watson/Crick", 1944:"Schrodinger", 1865:"Mendel", 1860:"Darwin", 1680:"Leeuwenhoek"};
+var data = { 1991:"Rosen", 1973:"Dobzhansky", 1953:"Watson/Crick", 1944:"Schrodinger", 1865:"Mendel", 1860:"Darwin", 1680:"Leeuwenhoek", 0:"1 AD"};
 
 var dataYears = [];
 var dataLabels = {}
@@ -33,13 +33,22 @@ var margin = {top: 210, right: 20, bottom: 220, left: 20},
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.log()
-    .domain([1000, 1])
+//    .domain([10000000000, 1])
+     .domain([1500, 1])
     .range([0, width]);
 
 var formatYear = d3.time.format("%Y"),
     formatYearTicks = function(d) { return formatYear(new Date(d, 0, 1, 0)) ; }
     
-var formatYearTicksCustom = function(d) { return formatYear(new Date(2014-d, 0, 1, 0)) ; }
+var formatYearTicksCustom = function(d) { 
+	if (d < 2014) {
+		return formatYear(new Date(2014-d, 0, 1, 0)) ; 
+		}
+	else {
+		return (d-2014) + " BC"
+	}
+	}
+
 var formatYearTicksCustom2 = function(d) { return dataLabels[d] ; }
 
 
@@ -68,7 +77,7 @@ var xAxis3 = d3.svg.axis()
 var xAxis4 = d3.svg.axis()
     .scale(x)
     .orient("top")
-    .ticks(5, formatYearTicksCustom)
+    .ticks(10, formatYearTicksCustom)
     .tickSize(6, 0);
 
 var superscript = "⁰¹²³⁴⁵⁶⁷⁸⁹",
