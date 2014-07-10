@@ -18,7 +18,7 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var data = { 1991:"Rosen", 1973:"Dobzhansky", 1953:"Watson/Crick", 1944:"Schrodinger", 1865:"Mendel", 1860:"Darwin", 1680:"Leeuwenhoek", 0:"1 AD"};
+var data = { 2004:"Human Genome", 1991:"Rosen", 1975:"Sanger", 1973:"Dobzhansky", 1953:"Watson/Crick", 1944:"Schrodinger", 1865:"Mendel", 1860:"Darwin", 1680:"Leeuwenhoek", 0:"1 AD"};
 
 var dataYears = [];
 var dataLabels = {}
@@ -34,7 +34,7 @@ var margin = {top: 210, right: 20, bottom: 220, left: 20},
 
 var x = d3.scale.log()
 //    .domain([10000000000, 1])
-     .domain([1500, 1])
+     .domain([1000, 1])
     .range([0, width]);
 
 var formatYear = d3.time.format("%Y"),
